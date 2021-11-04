@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Keyboard, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Image, View, StatusBar, Text, StyleSheet, TextInput} from 'react-native';
+import {Keyboard, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Image, View, StatusBar, Text, StyleSheet, TextInput} from 'react-native';
 
 const SignUp = ({ navigation }) => {
   const [mail, setMail] = useState('');
@@ -61,6 +61,11 @@ const SignUp = ({ navigation }) => {
                 style={styles.textInput}
               />
             </View>
+            <TouchableOpacity
+              style={styles.button}
+            >
+              <Text style={styles.text2}>Create account</Text>
+            </TouchableOpacity>
           </View>
       </KeyboardAvoidingView>
     </HideKeyboard>
@@ -75,11 +80,11 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     alignSelf:"center",
-    width: 130,
+    width: 230,
     backgroundColor: "rgba(29,161,242,1)",
     borderRadius: 100,
     justifyContent: "center",
-    marginTop: 60
+    marginTop: 30
   },
   text2: {
     color: "rgba(255,255,255,1)",
@@ -87,8 +92,8 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   logo: {
-    marginTop: 30,
-    marginBottom: 60,
+    marginTop: 20,
+    marginBottom: 40,
     alignSelf: "center",
     maxWidth: 380,
     maxHeight: 90

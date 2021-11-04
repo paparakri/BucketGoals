@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(29,161,242,1)",
     borderRadius: 100,
     justifyContent: "center",
-    marginTop: 100
+    marginTop: 40
   },
   text2: {
     color: "rgba(255,255,255,1)",
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginTop: 10,
+    marginBottom: 80,
     alignSelf: "center",
     maxWidth: 130,
     maxHeight: 130
