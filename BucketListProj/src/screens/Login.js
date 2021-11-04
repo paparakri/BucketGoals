@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import RNRestart from 'react-native-restart'
 import { Keyboard, TouchableOpacity, TouchableWithoutFeedback, Image, TextInput, Button, View, Text, StyleSheet, StatusBar } from 'react-native';
+import { onSignIn } from '../../auth';
 
 const Login = ({ navigation }) => {
+  
+  const onLogin = () => {
+    onSignIn(user, pass);
+    RNRestart.Restart();
+  };
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
-  const HideKeyboard = ({ children }) => (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      {children}
-    </TouchableWithoutFeedback>
-  );
+
   return (
-    <HideKeyboard>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.rect}>
         <StatusBar hidden />
         <View style={styles.mainColumn}>
@@ -40,12 +43,13 @@ const Login = ({ navigation }) => {
           </View>
           <TouchableOpacity
             style={styles.button}
+            onPress={onLogin}
           >
             <Text style={styles.text2}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </HideKeyboard>
+    </TouchableWithoutFeedback>
   );
 };
 
