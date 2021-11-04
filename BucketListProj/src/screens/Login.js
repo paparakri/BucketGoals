@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Keyboard, TouchableOpacity, TouchableWithoutFeedback, Image, TextInput, Button, View, Text, StyleSheet, StatusBar } from 'react-native';
 
 const Login = ({ navigation }) => {
-  const [text, setText] = useState('');
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
   const HideKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       {children}
@@ -20,18 +21,22 @@ const Login = ({ navigation }) => {
           <View style={styles.username}>
             <TextInput
               placeholder="Username"
+              onChangeText={user => setUser(user)}
+              defaultValue={user}
               placeholderTextColor="rgba(255,255,255,1)"
               secureTextEntry={false}
               style={styles.input}
-            ></TextInput>
+            />
           </View>
           <View style={styles.pass}>
             <TextInput
               placeholder="Password"
+              onChangeText={pass => setPass(pass)}
+              defaultValue={pass}
               placeholderTextColor="rgba(255,255,255,1)"
               secureTextEntry={true}
               style={styles.input}
-            ></TextInput>
+            />
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("SignUp")}

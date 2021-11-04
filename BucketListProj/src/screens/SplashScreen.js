@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
     fontSize: 32,
     lineHeight: 50,
     textAlign: "left",
-    marginTop: 80,
-    marginLeft: 3,
-    marginRight: 2
+    marginBottom: 20,
+    marginTop: 50,
+    marginLeft: 10,
+    marginRight: 40
   },
   button: {
     height: 71,
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(29,161,242,1)",
     borderRadius: 100,
     justifyContent: "center",
-    marginTop: 60
+    marginTop: 100
   },
   text2: {
     color: "rgba(255,255,255,1)",
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 45,
     marginLeft: 28,
     marginRight: 28,
-    marginTop: 40
+    marginTop: 20
   },
   logo: {
     marginTop: 10,
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     color: "rgba(255,255,255,1)",
-    fontSize: 20,
+    fontSize: 16,
     marginTop: 13
   }
 });
