@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import {Keyboard, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Image, View, StatusBar, Text, StyleSheet, TextInput} from 'react-native';
+import { onSignIn } from '../../auth';
 
 const SignUp = ({ navigation }) => {
   const [mail, setMail] = useState('');
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
   const [fullName, setFullName] = useState('');
-  const HideKeyboard = ({ children }) => (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      {children}
-    </TouchableWithoutFeedback>
-  );
+
+  const onSignUp = () => {
+    console.log('Entered onSignUp');
+    onSignIn(user, pass);
+  };
   
   return (
-    <HideKeyboard>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <KeyboardAvoidingView behavior='position' style={styles.rect}>
           <StatusBar hidden />
           <View style={styles.mainColumn}>
@@ -62,13 +63,14 @@ const SignUp = ({ navigation }) => {
               />
             </View>
             <TouchableOpacity
+              onPress={onSignUp}
               style={styles.button}
             >
               <Text style={styles.text2}>Create account</Text>
             </TouchableOpacity>
           </View>
       </KeyboardAvoidingView>
-    </HideKeyboard>
+    </TouchableWithoutFeedback>
   );
 };
 
