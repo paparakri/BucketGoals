@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import RNRestart from 'react-native-restart'
 import {Keyboard, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Image, View, StatusBar, Text, StyleSheet, TextInput} from 'react-native';
-import { onSignIn } from '../../auth';
 
 const SignUp = ({ navigation }) => {
   const [mail, setMail] = useState('');
@@ -11,8 +10,6 @@ const SignUp = ({ navigation }) => {
 
   const onSignUp = () => {
     console.log('Entered onSignUp');
-    onSignIn(user, pass);
-    RNRestart.Restart();
   };
   
   return (

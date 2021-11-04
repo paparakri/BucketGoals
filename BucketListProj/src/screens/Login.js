@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import RNRestart from 'react-native-restart'
 import { Keyboard, TouchableOpacity, TouchableWithoutFeedback, Image, TextInput, Button, View, Text, StyleSheet, StatusBar } from 'react-native';
-import { onSignIn } from '../../auth';
 
 const Login = ({ navigation }) => {
   
   const onLogin = () => {
-    onSignIn(user, pass);
-    RNRestart.Restart();
+    console.log('Entered onLogin');
   };
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');

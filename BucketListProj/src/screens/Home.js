@@ -1,9 +1,10 @@
 import React from "react";
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native'
-import { logout } from "../../auth";
 
 const Home = () => {
-    
+    const logout = () => {
+      console.log('entered logout');
+    };
     return (
         <View>
             <Text>Entered Home Screen</Text>
