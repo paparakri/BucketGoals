@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import { userControls } from '../../auth';
+import { NativeBaseProvider, Box } from 'native-base';
 
 class Home extends Component{
 
@@ -13,15 +14,9 @@ class Home extends Component{
 
   render(){
     return (
-      <View>
-          <Text>Entered Home Screen</Text>
-          <TouchableOpacity
-              style={styles.button}
-              onPress={this.logOut.bind(this)}
-          >
-              <Text style={styles.text2}>Log Out</Text>
-          </TouchableOpacity>
-      </View>
+      <NativeBaseProvider>
+        <Box>Hello world</Box>
+      </NativeBaseProvider>
     );
   }
 
