@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import RNRestart from 'react-native-restart'
+import React, { Component, useState } from 'react';
 import { Keyboard, TouchableOpacity, TouchableWithoutFeedback, Image, TextInput, Button, View, Text, StyleSheet, StatusBar } from 'react-native';
 
-const Login = ({ navigation }) => {
-  
-  const onLogin = () => {
-    console.log('Entered onLogin');
-  };
-  const [user, setUser] = useState('');
-  const [pass, setPass] = useState('');
+class Login extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      user: '',
+      pass: ''
+    }
+  }
 
-  return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+  onLogin(){
+    console.log('Entered onLogin');
+  }
+
+  render(){
+    return(
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.rect}>
         <StatusBar hidden />
         <View style={styles.mainColumn}>
@@ -22,8 +27,8 @@ const Login = ({ navigation }) => {
           <View style={styles.username}>
             <TextInput
               placeholder="Username"
-              onChangeText={user => setUser(user)}
-              defaultValue={user}
+              onChangeText={username => this.setState({ user: username })}
+              defaultValue={this.user}
               placeholderTextColor="rgba(255,255,255,1)"
               secureTextEntry={false}
               style={styles.input}
@@ -32,8 +37,8 @@ const Login = ({ navigation }) => {
           <View style={styles.pass}>
             <TextInput
               placeholder="Password"
-              onChangeText={pass => setPass(pass)}
-              defaultValue={pass}
+              onChangeText={password => this.setState({ pass: password })}
+              defaultValue={this.pass}
               placeholderTextColor="rgba(255,255,255,1)"
               secureTextEntry={true}
               style={styles.input}
@@ -41,15 +46,16 @@ const Login = ({ navigation }) => {
           </View>
           <TouchableOpacity
             style={styles.button}
-            onPress={onLogin}
+            onPress={this.onLogin}
           >
             <Text style={styles.text2}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
     </TouchableWithoutFeedback>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   rect: {

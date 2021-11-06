@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
+  "expoServerNgrokUrl": "https://qg-vaq.anonymous.bucketlistproj.exp.direct",
+  "packagerNgrokUrl": "https://packager.qg-vaq.anonymous.bucketlistproj.exp.direct",
+  "ngrokPid": 10408,
+  "packagerPid": null,
+  "webpackServerPort": null
+}

@@ -2,37 +2,40 @@ import React, { Component } from "react";
 import {Image, StyleSheet, View, StatusBar, Text, TouchableOpacity} from "react-native";
 import { Icon } from "react-native-vector-icons/icon";
 
-function Splash({ navigation }) {
+class Splash extends Component{
+  constructor(props){
+    super(props);
+  }
 
-  
-  return (
-    
-    <View style={styles.rect}>
-      <Image
-        style={styles.logo}
-        source={require('../img/logo.png')}
-      />
-      <StatusBar hidden />
-      <View style={styles.mainColumn}>
-        <Text style={styles.text}>
-          Find stuff you need to do before you... kick the bucket.
-        </Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("SignUp")}
-          style={styles.button}
-        >
-          <Text style={styles.text2}>Create account</Text>
-        </TouchableOpacity>
-        <View style={styles.rect2}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Login")}
-        >
-            <Text style={styles.text3}>Have an account already?</Text>
-        </TouchableOpacity>
+  render(){
+    return(
+      <View style={styles.rect}>
+        <Image
+          style={styles.logo}
+          source={require('../img/logo.png')}
+        />
+        <StatusBar hidden />
+        <View style={styles.mainColumn}>
+          <Text style={styles.text}>
+            Find stuff you need to do before you... kick the bucket.
+          </Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Sign Up")}
+            style={styles.button}
+          >
+            <Text style={styles.text2}>Create account</Text>
+          </TouchableOpacity>
+          <View style={styles.rect2}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Log In")}
+            >
+              <Text style={styles.text3}>Have an account already?</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-      </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({

@@ -1,17 +1,28 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import SyncStorage from "sync-storage";
 
-export const USER_KEY = "auth-key";
+//const data = await SyncStorage.init();
 
-export const signIn = (user, pass, mail) => {
-    AsyncStorage.setItem('User', user);
-    AsyncStorage.setItem('Pass', pass);
-    AsyncStorage.setItem('Mail', mail);
-    AsyncStorage.setItem(USER_KEY, 'true');
-}
-
-export const logOut = () => {
-    AsyncStorage.removeItem('User');
-    AsyncStorage.removeItem('Pass');
-    AsyncStorage.removeItem('Mail');
-    AsyncStorage.removeItem(USER_KEY);
+class userControls {
+    constructor(){
+        SyncStorage.init();
+        this.key = "auth-key";
+    }
+    signIn(user, pass, mail) {
+        SyncStorage.set('User', user)
+        SyncStorage.set('Pass', pass);
+        SyncStorage.set('Mail', mail);
+        SyncStorage.set(this.key, 'true');
+        console.log("Saved Info");
+        console.log(SyncStorage.getAllKeys());
+    }
+    logOut(){
+        SyncStorage.remove('User');
+        SyncStorage.remove('Pass');
+        SyncStorage.remove('Mail');
+        SyncStorage.remove(this.key);
+    }
+    enterBool(){
+        console.log(SyncStorage.getAllKeys());
+        return SyncStorage.get(this.key)
+    }
 }

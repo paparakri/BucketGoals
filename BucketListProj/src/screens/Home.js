@@ -1,22 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native'
 
-const Home = () => {
-    const logout = () => {
-      console.log('entered logout');
-    };
+class Home extends Component{
+  logOut() {
+    console.log('Entered LogOut');
+  }
+
+  render(){
     return (
-        <View>
-            <Text>Entered Home Screen</Text>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={logout}
-            >
-                <Text style={styles.text2}>Log Out</Text>
-            </TouchableOpacity>
-        </View>
+      <View>
+          <Text>Entered Home Screen</Text>
+          <TouchableOpacity
+              style={styles.button}
+              onPress={this.logOut}
+          >
+              <Text style={styles.text2}>Log Out</Text>
+          </TouchableOpacity>
+      </View>
     );
-};
+  }
+
+}
 
 const styles = StyleSheet.create({
     rect: {

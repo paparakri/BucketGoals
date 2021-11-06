@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
-import RNRestart from 'react-native-restart'
+import React, { Component, useState } from 'react';
 import {Keyboard, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Image, View, StatusBar, Text, StyleSheet, TextInput} from 'react-native';
 
-const SignUp = ({ navigation }) => {
-  const [mail, setMail] = useState('');
-  const [user, setUser] = useState('');
-  const [pass, setPass] = useState('');
-  const [fullName, setFullName] = useState('');
+class SignUp extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      fullName: '',
+      user: '',
+      pass: '',
+      mail: ''
+    }
+  }
 
-  const onSignUp = () => {
-    console.log('Entered onSignUp');
-  };
-  
-  return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+  onSignUp(){
+    console.log('Signed Up');
+    this.props.navigation.navigate('Home');
+  }
+
+  render(){
+    return(
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <KeyboardAvoidingView behavior='position' style={styles.rect}>
           <StatusBar hidden />
           <View style={styles.mainColumn}>
@@ -24,8 +30,8 @@ const SignUp = ({ navigation }) => {
             <View style={styles.input}>
               <TextInput
                 placeholder="Full Name"
-                onChangeText={fullName => setFullName(fullName)}
-                defaultValue={fullName}
+                onChangeText={name => this.setState({ fullName: name })}
+                defaultValue={this.state.fullName}
                 placeholderTextColor="rgba(255,255,255,1)"
                 secureTextEntry={false}
                 style={styles.textInput}
@@ -34,8 +40,8 @@ const SignUp = ({ navigation }) => {
             <View style={styles.input}>
               <TextInput
                 placeholder="Username"
-                onChangeText={user => setUser(user)}
-                defaultValue={user}
+                onChangeText={username => this.setState({ user: username })}
+                defaultValue={this.state.user}
                 placeholderTextColor="rgba(255,255,255,1)"
                 secureTextEntry={false}
                 style={styles.textInput}
@@ -44,8 +50,8 @@ const SignUp = ({ navigation }) => {
             <View style={styles.input}>
               <TextInput
                 placeholder="e-Mail"
-                onChangeText={mail => setMail(mail)}
-                defaultValue={mail}
+                onChangeText={email => this.setState({ mail: email })}
+                defaultValue={this.state.mail}
                 placeholderTextColor="rgba(255,255,255,1)"
                 secureTextEntry={false}
                 style={styles.textInput}
@@ -54,15 +60,15 @@ const SignUp = ({ navigation }) => {
             <View style={styles.input}>
               <TextInput
                 placeholder="Password"
-                onChangeText={pass => setPass(pass)}
-                defaultValue={pass}
+                onChangeText={password => this.setState({ pass: password })}
+                defaultValue={this.state.pass}
                 placeholderTextColor="rgba(255,255,255,1)"
                 secureTextEntry={true}
                 style={styles.textInput}
               />
             </View>
             <TouchableOpacity
-              onPress={onSignUp}
+              onPress={this.onSignUp.bind(this)}
               style={styles.button}
             >
               <Text style={styles.text2}>Create account</Text>
@@ -70,8 +76,9 @@ const SignUp = ({ navigation }) => {
           </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   rect: {
