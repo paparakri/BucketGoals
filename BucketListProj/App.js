@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import { createRouteNavigator, SignedOut } from './nav'
+import { Text } from 'react-native';
+import { createRouteNavigator, SignedOut, SignedIn } from './nav'
+import { userControls } from './auth';
+import { set } from 'traverse';
 
 class App extends Component{
   constructor(props){
@@ -10,8 +13,29 @@ class App extends Component{
     }
   }
 
+  async componentDidMount(){
+    try {
+      const controls = new userControls;
+      const data = await controls.enterBool();
+      this.setState({ checkedSignedIn: true });
+      const signBool = (data === 'true')
+      if(data !== null){
+        this.setState({ checkedSignedIn: true, signedIn: signBool });
+      }
+      console.log('AppData', this.state.signedIn)
+    } catch(err){
+      console.log(err);
+    }
+  }
+
   render(){
-    const Layout = SignedOut;
+    let Layout = <Text>There was an error</Text>
+    if(this.state.signedIn){
+      Layout = SignedIn;
+    } else {
+      Layout = SignedOut;
+    }
+      
     return(
       <Layout />
     );

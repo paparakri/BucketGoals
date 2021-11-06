@@ -1,5 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {Keyboard, TouchableOpacity, KeyboardAvoidingView, TouchableWithoutFeedback, Image, View, StatusBar, Text, StyleSheet, TextInput} from 'react-native';
+import { userControls } from '../../auth';
+
 
 class SignUp extends Component{
   constructor(props){
@@ -12,9 +14,10 @@ class SignUp extends Component{
     }
   }
 
+  controls = new userControls;
   onSignUp(){
     console.log('Signed Up');
-    this.props.navigation.navigate('Home');
+    this.controls.signIn(this.state.user, this.state.pass, this.state.mail)
   }
 
   render(){

@@ -1,28 +1,31 @@
-import SyncStorage from "sync-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-//const data = await SyncStorage.init();
 
-class userControls {
+export class userControls {
     constructor(){
-        SyncStorage.init();
         this.key = "auth-key";
     }
-    signIn(user, pass, mail) {
-        SyncStorage.set('User', user)
-        SyncStorage.set('Pass', pass);
-        SyncStorage.set('Mail', mail);
-        SyncStorage.set(this.key, 'true');
+
+    async signIn(user, pass, mail) {
+        await AsyncStorage.setItem('User', user)
+        await AsyncStorage.setItem('Pass', pass);
+        await AsyncStorage.setItem('Mail', mail);
+        await AsyncStorage.setItem(this.key, 'true');
         console.log("Saved Info");
-        console.log(SyncStorage.getAllKeys());
+        const keys = await AsyncStorage.getAllKeys();
+        console.log(keys);
     }
-    logOut(){
-        SyncStorage.remove('User');
-        SyncStorage.remove('Pass');
-        SyncStorage.remove('Mail');
-        SyncStorage.remove(this.key);
+
+    async logOut(){
+        await AsyncStorage.removeItem('User');
+        await AsyncStorage.removeItem('Pass');
+        await AsyncStorage.removeItem('Mail');
+        await AsyncStorage.removeItem(this.key);
     }
-    enterBool(){
-        console.log(SyncStorage.getAllKeys());
-        return SyncStorage.get(this.key)
+    
+    async enterBool(){
+        const keys = await AsyncStorage.getAllKeys();
+        const data = await AsyncStorage.getItem(this.key);
+        return data;
     }
 }

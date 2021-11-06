@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import {Text, TouchableOpacity, View, StyleSheet} from 'react-native'
+import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import { userControls } from '../../auth';
 
 class Home extends Component{
+
+  controls = new userControls;
+
   logOut() {
     console.log('Entered LogOut');
+    this.controls.logOut();
   }
 
   render(){
@@ -12,7 +17,7 @@ class Home extends Component{
           <Text>Entered Home Screen</Text>
           <TouchableOpacity
               style={styles.button}
-              onPress={this.logOut}
+              onPress={this.logOut.bind(this)}
           >
               <Text style={styles.text2}>Log Out</Text>
           </TouchableOpacity>

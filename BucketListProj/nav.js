@@ -1,5 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/screens/SignUp'
 import Login from './src/screens/Login'
@@ -7,7 +8,7 @@ import Splash from './src/screens/SplashScreen'
 import Home from './src/screens/Home';
 
 const headerStyle = {
-    backgroundColor: '#151f28',
+    backgroundColor: '#151f28'
 };
 
 const Stack = createNativeStackNavigator();
@@ -47,6 +48,19 @@ export const SignedOut = () => {
                     }}
                 />
             </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
+
+const Tab = createBottomTabNavigator();
+
+export const SignedIn = () => {
+    return(
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Home" component={Home}/>
+            </Tab.Navigator>
         </NavigationContainer>
     );
 }
