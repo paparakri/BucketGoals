@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Keyboard, TouchableOpacity, TouchableWithoutFeedback, Image, TextInput, Button, View, Text, StyleSheet, StatusBar } from 'react-native';
+import { userControls } from '../../auth';
 
 class Login extends Component{
   constructor(props){
@@ -9,9 +10,10 @@ class Login extends Component{
       pass: ''
     }
   }
-
+  controls = new userControls;
   onLogin(){
     console.log('Entered onLogin');
+    this.controls.signIn(this.state.user, this.state.pass)
   }
 
   render(){
@@ -46,7 +48,7 @@ class Login extends Component{
           </View>
           <TouchableOpacity
             style={styles.button}
-            onPress={this.onLogin}
+            onPress={this.onLogin.bind(this)}
           >
             <Text style={styles.text2}>Login</Text>
           </TouchableOpacity>

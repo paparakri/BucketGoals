@@ -6,10 +6,9 @@ export class userControls {
         this.key = "auth-key";
     }
 
-    async signIn(user, pass, mail) {
+    async signIn(user, pass) {
         await AsyncStorage.setItem('User', user)
         await AsyncStorage.setItem('Pass', pass);
-        await AsyncStorage.setItem('Mail', mail);
         await AsyncStorage.setItem(this.key, 'true');
         console.log("Saved Info");
         const keys = await AsyncStorage.getAllKeys();

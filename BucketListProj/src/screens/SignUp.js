@@ -17,7 +17,7 @@ class SignUp extends Component{
   controls = new userControls;
   onSignUp(){
     console.log('Signed Up');
-    this.controls.signIn(this.state.user, this.state.pass, this.state.mail)
+    this.controls.signIn(this.state.user, this.state.pass)
   }
 
   render(){
